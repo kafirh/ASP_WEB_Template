@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Monitoring_Template</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Monitoring_Template.styles.css" asp-append-version="true" />
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #343a40;
+            padding-top: 20px;
+            transition: all 0.3s;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Content Styling */
+        .content {
+            margin-left: 250px;
+            transition: margin-left 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content" id="content">
+        <nav class="navbar navbar-light bg-light px-3">
+            <button class="btn btn-outline-dark" onclick="toggleSidebar()">&#9776; Menu</button>
+        </nav>
+        <div class="container mt-3">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container">
+            &copy; 2025 - Monitoring_Template - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            let content = document.getElementById("content");
+            if (sidebar.style.left === "0px" || sidebar.style.left === "") {
+                sidebar.style.left = "-250px";
+                content.style.marginLeft = "0";
+            } else {
+                sidebar.style.left = "0px";
+                content.style.marginLeft = "250px";
+            }
+        }
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.card {
+    max-width: 400px; /* Default untuk layar kecil */
+    width: 100%;
+    min-width: 320px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.btn-color {
+    background-color: #0e1c36;
+    color: #fff;
+    transition: 0.3s;
+}
+
+    .btn-color:hover {
+        background-color: #142850;
+    }
+
+.profile-image-pic {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #0e1c36;
+    margin-top: -60px;
+    background: white;
+}
+
+.cardbody-color {
+    background-color: #ebf2fa;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 576px) {
+    .card {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .profile-image-pic {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+/* Lebarkan card untuk tablet */
+@media (min-width: 768px) {
+    .card {
+        max-width: 500px;
+        width: 90%;
+    }
+}
+
+/* Lebarkan card lebih besar untuk desktop */
+@media (min-width: 1024px) {
+    .card {
+        max-width: 600px;
+    }
+}
+
+/* Card lebih lebar untuk layar sangat besar (4K) */
+@media (min-width: 1440px) {
+    .card {
+        max-width: 700px;
+    }
+}

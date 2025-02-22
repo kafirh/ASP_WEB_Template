@@ -1,0 +1,67 @@
+﻿@model Monitoring_Template.Application.DTO.LoginRequestDTO
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Monitoring_Template</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Monitoring_Template.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/" />
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card text-center p-4 shadow-lg">
+            <h2 class="text-dark">Login</h2>
+            <p class="text-muted">Laundry System Business Unit</p>
+            <div class="text-center">
+                <img src="~/resource/avatar.jpg" class="profile-image-pic my-3" alt="profile">
+            </div>
+            <form method="post" asp-controller="Auth" asp-action="Login">
+                <!-- Input NIK dengan ikon -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><img src="~/resource/person.svg" alt="NIK" /></span>
+                    <input type="text" class="form-control" asp-for="NIK" placeholder="Masukkan NIK" required />
+                </div>
+
+                <!-- Input Password dengan ikon dan toggle -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><img src="~/resource/lock.svg" alt="Password" /></span>
+                    <input type="password" class="form-control" asp-for="Password" id="password" placeholder="Masukkan Password" required />
+                    <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                        <img src="/resource/eye.svg" alt="show" width="20" height="20" />
+                    </button>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('img'); // Ambil elemen <img> di dalam button
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.setAttribute('src', '/resource/eye-slash.svg'); // Ubah ke ikon "eye-slash"
+                icon.setAttribute('alt', 'hide'); // Perbaiki alt text
+            } else {
+                passwordInput.type = 'password';
+                icon.setAttribute('src', '/resource/eye.svg'); // Ubah ke ikon "eye"
+                icon.setAttribute('alt', 'show');
+            }
+        });
+    </script>
+</body>
+</html>
