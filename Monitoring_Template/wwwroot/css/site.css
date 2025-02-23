@@ -1,29 +1,273 @@
+/* Base Styles */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100vh;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #222, #444);
+    color: white;
+    padding-top: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-hidden {
+    left: -260px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+    .sidebar-header span {
+        color: red;
+    }
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .sidebar-menu li {
+        padding: 10px 15px;
+    }
+
+    .sidebar-menu a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        padding: 10px 15px;
+        transition: background 0.3s ease-in-out;
+        border-radius: 6px;
+    }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none;
+    list-style: none;
+    padding-left: 30px;
+}
+
+    .dropdown-menu li {
+        padding: 5px 0;
+    }
+
+.sidebar-menu .dropdown a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-menu .dropdown i.fa-chevron-down {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-menu .dropdown.open i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Top Button */
+.top-btn {
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 80%;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+    .top-btn:hover {
+        background-color: #777;
+    }
+
+/* Theme Toggle */
+.theme-toggle {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.dark-mode, .light-mode {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dark-mode {
+    background-color: black;
+}
+
+.light-mode {
+    background-color: white;
+    border: 1px solid black;
+}
+
+    .dark-mode:hover, .light-mode:hover {
+        transform: scale(1.1);
+    }
+
+/* Content */
+.content {
+    margin-left: 260px;
+    transition: margin-left 0.3s ease-in-out;
+    padding: 20px;
+    width: 100%;
+}
+
+.content-full {
+    margin-left: 0;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+    .close-btn:hover {
+        transform: scale(1.2);
+    }
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background-color: #343a40;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+    .toggle-btn:hover {
+        background-color: #495057;
+        transform: scale(1.1);
+    }
+
+    .toggle-btn.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100px);
+    }
+
+/* Responsive Design */
+@media (max-width: 992px) {
     .sidebar {
-        left: -250px;
+        width: 220px;
+    }
+
+    .content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+
+    .toggle-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: 0;
+        padding: 10px;
     }
 
     .content {
         margin-left: 0;
     }
-}
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+    .toggle-btn {
+        left: 10px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 }

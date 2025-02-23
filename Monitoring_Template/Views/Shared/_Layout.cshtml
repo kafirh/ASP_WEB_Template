@@ -5,89 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Monitoring_Template</title>
     <base href="~/" />
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Monitoring_Template.styles.css" asp-append-version="true" />
-    <style>
-        /* Sidebar Styling */
-        .sidebar {
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            background-color: #343a40;
-            padding-top: 20px;
-            transition: all 0.3s;
-        }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.2s;
-        }
-        .sidebar a:hover {
-            background-color: #495057;
-        }
-        .sidebar .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-        }
-        
-        /* Content Styling */
-        .content {
-            margin-left: 250px;
-            transition: margin-left 0.3s;
-        }
-    </style>
 </head>
 <body>
+    <!-- Toggle Button -->
+    <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
-        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <button class="close-btn" onclick="toggleSidebar()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h2>SideMenu<span style="color: red;">.</span></h2>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li><a asp-action="index" asp-controller="Home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> What we do</a></li>
+            <li><a asp-action="privacy" asp-controller="Home"><i class="fas fa-user"></i> About us</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact us</a></li>
+
+            <!-- Dropdown Menu -->
+            <li class="dropdown">
+                <a href="#" onclick="toggleDropdown()">
+                    <i class="fas fa-sync-alt"></i> Other sections <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu" id="dropdownMenu">
+                    <li><a href="#">Section 1</a></li>
+                    <li><a href="#">Section 2</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+            <button class="top-btn">⬆ Top</button>
+            <div class="theme-toggle">
+                <span class="dark-mode"></span>
+                <span class="light-mode"></span>
+            </div>
+        </div>
     </div>
 
-    <!-- Page Content -->
+    <!-- Content -->
     <div class="content" id="content">
-        <nav class="navbar navbar-light bg-light px-3">
-            <button class="btn btn-outline-dark" onclick="toggleSidebar()">&#9776; Menu</button>
-        </nav>
-        <div class="container mt-3">
-            <main role="main" class="pb-3">
+        <div class="container-fluid">
+            <main role="main">
                 @RenderBody()
             </main>
         </div>
     </div>
 
-    <footer class="border-top footer text-muted mt-4">
-        <div class="container">
-            &copy; 2025 - Monitoring_Template - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-
+    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function toggleSidebar() {
+                function toggleSidebar() {
             let sidebar = document.getElementById("sidebar");
             let content = document.getElementById("content");
-            if (sidebar.style.left === "0px" || sidebar.style.left === "") {
-                sidebar.style.left = "-250px";
-                content.style.marginLeft = "0";
+            let toggleBtn = document.getElementById("toggleBtn");
+
+            if (sidebar.classList.contains("sidebar-hidden")) {
+                sidebar.classList.remove("sidebar-hidden");
+                content.classList.remove("content-full");
+                toggleBtn.classList.add("hidden");
             } else {
-                sidebar.style.left = "0px";
-                content.style.marginLeft = "250px";
+                sidebar.classList.add("sidebar-hidden");
+                content.classList.add("content-full");
+                toggleBtn.classList.remove("hidden");
             }
         }
+
+        function toggleDropdown() {
+            let dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
     </script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

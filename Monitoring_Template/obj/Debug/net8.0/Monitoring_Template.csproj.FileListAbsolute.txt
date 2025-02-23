@@ -89,3 +89,4 @@ D:\visual_basic_belajar\Monitoring_Template\Monitoring_Template\obj\Debug\net8.0
 D:\visual_basic_belajar\Monitoring_Template\Monitoring_Template\obj\Debug\net8.0\Monitoring_Template.genruntimeconfig.cache
 D:\visual_basic_belajar\Monitoring_Template\Monitoring_Template\obj\Debug\net8.0\ref\Monitoring_Template.dll
 D:\visual_basic_belajar\Monitoring_Template\Monitoring_Template\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\visual_basic_belajar\Monitoring_Template\Monitoring_Template\obj\Debug\net8.0\Monitoring_Template.sourcelink.json
