@@ -1,6 +1,123 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Kebijakan Privasi";
 }
-<h1>@ViewData["Title"]</h1>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
 
-<p>Use this page to detail your site's privacy policy.</p>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    .accordion-button {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+        .accordion-button:not(.collapsed) {
+            color: #fff;
+            background-color: #0d6efd;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+
+    .accordion-body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-11 col-sm-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Kebijakan Privasi</h1>
+                    <p class="lead text-center mb-5">
+                        Selamat datang di website resmi kolaborasi antara <strong>Politeknik Elektronika Negeri Surabaya (PENS)</strong> dan <strong>Laundry System Business Unit Panasonic Manufacturing Indonesia (LSBU Panasonic)</strong>.
+                    </p>
+
+                    <!-- Dropdown 1: Siapa Kami? -->
+                    <div class="accordion" id="privacyAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Siapa Kami?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#privacyAccordion">
+                                <div class="accordion-body">
+                                    <p>Kami adalah dua institusi terpercaya yang berkolaborasi untuk menciptakan platform digital yang inovatif:</p>
+                                    <ul>
+                                        <li><strong>PENS:</strong> Institusi pendidikan tinggi terkemuka di Indonesia.</li>
+                                        <li><strong>LSBU Panasonic:</strong> Divisi khusus dari Panasonic Manufacturing Indonesia yang berfokus pada solusi laundry modern.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown 2: Apa yang Kami Lakukan dengan Data Anda? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Apa yang Kami Lakukan dengan Data Anda?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#privacyAccordion">
+                                <div class="accordion-body">
+                                    <p>Kami sangat menghargai privasi Anda. Berikut adalah beberapa hal penting tentang bagaimana kami mengelola data Anda:</p>
+                                    <ul>
+                                        <li><strong>Informasi yang Kami Kumpulkan:</strong> Informasi yang Anda berikan secara sukarela melalui formulir kontak atau registrasi.</li>
+                                        <li><strong>Tujuan Pengumpulan Data:</strong> Untuk memberikan layanan yang lebih baik dan relevan kepada Anda.</li>
+                                        <li><strong>Keamanan Data:</strong> Semua data dilindungi dengan teknologi enkripsi terkini.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown 3: Hak Anda sebagai Pengguna -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Hak Anda sebagai Pengguna
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#privacyAccordion">
+                                <div class="accordion-body">
+                                    <p>Sebagai pengguna, Anda memiliki hak penuh atas data pribadi Anda. Anda dapat:</p>
+                                    <ul>
+                                        <li>Meminta akses ke data yang kami miliki tentang Anda.</li>
+                                        <li>Meminta pembaruan atau penghapusan data Anda.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown 4: Hubungi Kami -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Hubungi Kami
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#privacyAccordion">
+                                <div class="accordion-body">
+                                    <p>Jika Anda memiliki pertanyaan, silakan hubungi kami:</p>
+                                    <ul>
+                                        <li><strong>Email:</strong> privacy@pens-lsbu-panasonic.id</li>
+                                        <li><strong>Telepon:</strong> +62 123 456 789</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-center text-muted mt-5">
+                        Terima kasih telah mengunjungi website kami!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
