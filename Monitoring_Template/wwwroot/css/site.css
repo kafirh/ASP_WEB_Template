@@ -109,13 +109,54 @@ body {
     transform: rotate(180deg);
 }
 
+/* Tombol Logout */
+.logout-container {
+    margin-top: auto; /* Menempatkan logout di bagian bawah */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Kurangi jarak dengan footer */
+}
+
+.logout-btn {
+    width: 240px; /* Lebih lebar */
+    border: 2px solid red;
+    color: red;
+    background: transparent;
+    padding: 12px 20px 12px 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.2);
+}
+
+    .logout-btn i {
+        font-size: 1.3rem;
+    }
+
+    .logout-btn:hover {
+        background: red;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0px 6px 10px rgba(255, 0, 0, 0.3);
+    }
+
 /* Sidebar Footer */
 .sidebar-footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
     text-align: center;
+    padding: 5px 0; /* Kurangi padding agar tidak terlalu jauh */
+    width: 100%;
+    position: relative;
+    font-size: 0.9rem;
 }
+
+
 
 /* Top Button */
 .top-btn {
@@ -229,6 +270,10 @@ body {
         width: 220px;
     }
 
+    .logout-btn{
+        width: 180px;
+    }
+
     .content {
         margin-left: 220px;
     }
@@ -241,6 +286,9 @@ body {
 
     .content {
         margin-left: 200px;
+    }
+    .logout-btn {
+        width: 160px;
     }
 
     .toggle-btn {
@@ -261,6 +309,9 @@ body {
 
     .content {
         margin-left: 0;
+    }
+    .logout-btn {
+        width:140px;
     }
 
     .toggle-btn {

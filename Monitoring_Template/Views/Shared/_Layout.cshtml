@@ -49,7 +49,15 @@
                 </ul>
             </li>
         </ul>
+        <!-- Tombol Logout -->
+        <div class="logout-container container-fluid">
+            <form asp-action="Logout" asp-controller="Auth" method="post">
+                <button type="submit" class="logout-btn">
+                    LOGOUT <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
 
+        </div>
         <!-- Sidebar Footer -->
         <div class="sidebar-footer">
             <div class="container">

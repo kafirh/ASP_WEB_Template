@@ -18,8 +18,9 @@ namespace Monitoring_Template.Infrastructure
 
             // Registrasi repository agar bisa digunakan di Application Layer
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserRoleRepository, UserRoleRepository>(); // Tambahkan ini
-            services.AddScoped<IRoleRepository, RoleRepository>(); // Tambahkan ini
+            services.AddScoped<IUserRoleRepository, UserRoleRepository>(); 
+            services.AddScoped<IRoleRepository, RoleRepository>(); 
+            services.AddScoped<IResultPackingLabelRepository, ResultPackingLabelRepository>();
 
             // Registrasi untuk mengakses HttpContext (dibutuhkan untuk CookieAuth)
             services.AddHttpContextAccessor();

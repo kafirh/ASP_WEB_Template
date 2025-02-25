@@ -12,5 +12,6 @@ namespace Monitoring_Template.Infrastructure.Persistence
         public DbSet<UserModel> AspNetUsers { get; set; }
         public DbSet<RoleModel> AspNetRoles { get; set; }
         public DbSet<UserRoleModel> AspNetUserRole { get; set; }
+        public DbSet<ResultPackingLabelsModel> Result_Packing_Labels { get; set; }
     }
 }

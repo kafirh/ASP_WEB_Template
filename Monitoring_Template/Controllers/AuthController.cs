@@ -25,5 +25,11 @@ namespace Monitoring_Template.Controllers
 
             return RedirectToAction("Index","Home");
         }
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _authService.LogoutAsync();
+            return RedirectToAction("Index", "Auth");
+        }
     }
 }

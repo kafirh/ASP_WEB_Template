@@ -2,7 +2,168 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .ContainerPage {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .filter-section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .filter-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .filter-section input[type="date"],
+        .filter-section input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .filter-section button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .filter-section button:hover {
+                background-color: #0056b3;
+            }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<div class="ContainerPage">
+    <div class="filter-section">
+        <h3>Filter Data</h3>
+        <input type="date" id="startDate" placeholder="Start Date">
+        <input type="date" id="endDate" placeholder="End Date">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Jenis Produk</th>
+                <th>Model Code</th>
+                <th>Model Number</th>
+                <th>Global Code ID</th>
+                <th>Serial Number</th>
+                <th>Scanning Date</th>
+                <th>Scanning Time</th>
+                <th>Location</th>
+                <th>Register</th>
+                <th>Operator ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Contoh data -->
+            <tr>
+                <td>Laptop</td>
+                <td>MC123</td>
+                <td>MN456</td>
+                <td>GC789</td>
+                <td>SN101112</td>
+                <td>2023-10-01</td>
+                <td>14:30</td>
+                <td>New York</td>
+                <td>Yes</td>
+                <td>OP001</td>
+            </tr>
+            <tr>
+                <td>Smartphone</td>
+                <td>MC124</td>
+                <td>MN457</td>
+                <td>GC790</td>
+                <td>SN101113</td>
+                <td>2023-10-02</td>
+                <td>10:15</td>
+                <td>Los Angeles</td>
+                <td>No</td>
+                <td>OP002</td>
+            </tr>
+            <!-- Tambahkan data lainnya sesuai kebutuhan -->
+        </tbody>
+    </table>
 </div>
+
+<script>
+    function applyFilters() {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const table = document.getElementById('dataTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+            const row = rows[i];
+            const cells = row.getElementsByTagName('td');
+            let matchDate = true;
+            let matchSearch = false;
+
+            // Filter berdasarkan rentang tanggal
+            if (startDate && endDate) {
+                const scanningDate = cells[5].innerText;
+                matchDate = scanningDate >= startDate && scanningDate <= endDate;
+            }
+
+            // Filter berdasarkan pencarian teks
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].innerText.toLowerCase().includes(searchInput)) {
+                    matchSearch = true;
+                    break;
+                }
+            }
+
+            // Tampilkan atau sembunyikan baris
+            if (matchDate && matchSearch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+</script>
