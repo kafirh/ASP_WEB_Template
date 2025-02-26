@@ -8865,6 +8865,10 @@
       "PackagePath": "staticwebassets\\resource\\lock.svg"
     },
     {
+      "Id": "D:\\visual_basic_belajar\\Monitoring_Template\\Monitoring_Template\\wwwroot\\resource\\person-badge.svg",
+      "PackagePath": "staticwebassets\\resource\\person-badge.svg"
+    },
+    {
       "Id": "D:\\visual_basic_belajar\\Monitoring_Template\\Monitoring_Template\\wwwroot\\resource\\person.svg",
       "PackagePath": "staticwebassets\\resource\\person.svg"
     },

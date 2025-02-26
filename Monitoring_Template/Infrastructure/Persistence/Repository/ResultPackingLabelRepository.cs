@@ -12,15 +12,23 @@ namespace Monitoring_Template.Infrastructure.Persistence.Repository
             _databaseContext = databaseContext;
         }
 
-        public async Task<List<ResultPackingLabelsModel>> GetAll()
+        public IQueryable<ResultPackingLabelsModel> GetByDate(DateOnly startDate, DateOnly endDate)
         {
-            return await _databaseContext.Result_Packing_Labels.ToListAsync();
+            return _databaseContext.Result_Packing_Labels
+                .AsNoTracking()
+                .Where(r => r.ScanningDate >= startDate && r.ScanningDate <= endDate);
         }
 
         public async Task<ResultPackingLabelsModel?> GetResult(int id)
         {
             return await _databaseContext.Result_Packing_Labels.
                 FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        IQueryable<ResultPackingLabelsModel> IResultPackingLabelRepository.GetAll()
+        {
+            return _databaseContext.Result_Packing_Labels
+                .AsNoTracking();
         }
     }
 }

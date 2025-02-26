@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<ResultPackingLabelsModel>
 
 <style>
     body {
@@ -9,10 +10,15 @@
         padding: 0;
     }
 
+    .title-Page {
+        margin-top: 20px;
+        text-align: center;
+    }
+
     .ContainerPage {
-        padding: 20px;
-        max-width: 1200px;
+        padding: 5px;
         margin: 0 auto;
+        max-width: 95%;
     }
 
     .filter-section {
@@ -28,8 +34,7 @@
             color: #333;
         }
 
-        .filter-section input[type="date"],
-        .filter-section input[type="text"] {
+        .filter-section input {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -75,11 +80,15 @@
     }
 </style>
 
+<div class="title-Page">
+    <h3>HOME PAGE</h3>
+</div>
+
 <div class="ContainerPage">
     <div class="filter-section">
         <h3>Filter Data</h3>
-        <input type="date" id="startDate" placeholder="Start Date">
-        <input type="date" id="endDate" placeholder="End Date">
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
         <input type="text" id="searchInput" placeholder="Search...">
         <button onclick="applyFilters()">Apply Filters</button>
     </div>
@@ -87,6 +96,7 @@
     <table id="dataTable">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Jenis Produk</th>
                 <th>Model Code</th>
                 <th>Model Number</th>
@@ -100,32 +110,33 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Contoh data -->
-            <tr>
-                <td>Laptop</td>
-                <td>MC123</td>
-                <td>MN456</td>
-                <td>GC789</td>
-                <td>SN101112</td>
-                <td>2023-10-01</td>
-                <td>14:30</td>
-                <td>New York</td>
-                <td>Yes</td>
-                <td>OP001</td>
-            </tr>
-            <tr>
-                <td>Smartphone</td>
-                <td>MC124</td>
-                <td>MN457</td>
-                <td>GC790</td>
-                <td>SN101113</td>
-                <td>2023-10-02</td>
-                <td>10:15</td>
-                <td>Los Angeles</td>
-                <td>No</td>
-                <td>OP002</td>
-            </tr>
-            <!-- Tambahkan data lainnya sesuai kebutuhan -->
+            @if (Model != null && Model.Any())
+            {
+                var index = 1;
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>@item.JenisProduk</td>
+                        <td>@item.ModelCode</td>
+                        <td>@item.ModelNumber</td>
+                        <td>@item.GlobalCodeId</td>
+                        <td>@item.SerialNumber</td>
+                        <td>@item.ScanningDate.ToString("dd MMM yyyy", new System.Globalization.CultureInfo("id-ID"))</td>
+                        <td>@item.ScanningTime.ToString("hh\\:mm")</td>
+                        <td>@(item.Location?.ToString() ?? "-")</td>
+                        <td>@item.Register</td>
+                        <td>@item.OperatorId</td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="11" style="text-align: center; color: red;">No data available</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
@@ -146,8 +157,14 @@
 
             // Filter berdasarkan rentang tanggal
             if (startDate && endDate) {
-                const scanningDate = cells[5].innerText;
-                matchDate = scanningDate >= startDate && scanningDate <= endDate;
+                const scanningDate = cells[6].innerText; // Index 6 untuk ScanningDate
+                const dateValue = new Date(scanningDate);
+                const filterStartDate = new Date(startDate);
+                const filterEndDate = new Date(endDate);
+
+                if (!(dateValue >= filterStartDate && dateValue <= filterEndDate)) {
+                    matchDate = false;
+                }
             }
 
             // Filter berdasarkan pencarian teks
@@ -159,11 +176,7 @@
             }
 
             // Tampilkan atau sembunyikan baris
-            if (matchDate && matchSearch) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+            row.style.display = (matchDate && matchSearch) ? '' : 'none';
         }
     }
 </script>

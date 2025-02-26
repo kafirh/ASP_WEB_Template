@@ -2214,3 +2214,4 @@ wwwroot\resource\eye.svg
 wwwroot\resource\eye-slash.svg
 wwwroot\resource\lock.svg
 wwwroot\resource\person.svg
+wwwroot\resource\person-badge.svg

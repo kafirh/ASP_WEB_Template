@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Monitoring_Template.Application.Services;
+using Monitoring_Template.Application.Services.Interface;
 using Monitoring_Template.Core.Interfaces;
 using Monitoring_Template.Infrastructure.Auth;
 using Monitoring_Template.Infrastructure.Persistence;
@@ -29,7 +30,8 @@ namespace Monitoring_Template.Infrastructure
             services.AddScoped<IAuthSessionService, CookieAuthService>();
 
             //  Registrasi Auth Service
-            services.AddScoped<AuthService>();
+            services.AddScoped<IAuthService,AuthService>();
+            services.AddScoped<IHomeService,HomeService>();
 
 
 

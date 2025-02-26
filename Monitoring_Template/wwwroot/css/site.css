@@ -53,6 +53,15 @@ body {
         color: red;
     }
 
+/* Sidebar Hai User */
+.hai-user {
+    padding: 5px 15px; /* Padding kiri dan kanan */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%; /* Pastikan mengambil seluruh lebar parent */
+    display: flex;
+    gap: 10px
+}
+
 /* Sidebar Menu */
 .sidebar-menu {
     list-style: none;

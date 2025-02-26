@@ -18,18 +18,19 @@
     <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">
         <i class="fas fa-bars"></i>
     </button>
-
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">
             <i class="fas fa-arrow-left"></i>
         </button>
-
-        <!-- Sidebar Header -->
-        <div class="sidebar-header" >
-            <h2>SideMenu<span style="color: red;">.</span></h2>
-        </div>
-
+        <!-- Sidebar User -->
+        <span class="hai-user text-uppercase text-white">
+            <img style="filter: invert(1)" src="~/resource/person-badge.svg" alt="person" width="20" height="20" />Hai, @User.Identity?.Name
+        </span>
+         <!-- Sidebar Header --> 
+         <div class="sidebar-header" > 
+             <h2>SideMenu<span style="color: red;">.</span></h2> 
+         </div> 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li><a asp-action="index" asp-controller="Home"><i class="fas fa-home"></i> Home</a></li>
@@ -50,7 +51,7 @@
             </li>
         </ul>
         <!-- Tombol Logout -->
-        <div class="logout-container container-fluid">
+        <div class="logout-container">
             <form asp-action="Logout" asp-controller="Auth" method="post">
                 <button type="submit" class="logout-btn">
                     LOGOUT <i class="fas fa-sign-out-alt"></i>

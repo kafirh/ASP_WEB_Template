@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Monitoring_Template.Application.DTO;
 using Monitoring_Template.Application.Services;
+using Monitoring_Template.Application.Services.Interface;
 
 namespace Monitoring_Template.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly AuthService _authService;
-        public AuthController(AuthService authService)
+        private readonly IAuthService _authService;
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
